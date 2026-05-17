@@ -1,0 +1,43 @@
+1. Variables and Data Types
+   x = 10
+   name = "Python"
+   
+2. Strings and Concatenation
+   message = "Hello, " + name
+   print(message)
+   
+3. Lists and Indexing
+   numbers = [1, 2, 3, 4, 5]
+   first = numbers[0]
+   
+4. Dictionaries
+   person = {"name": "John", "age": 30}
+   print(person["name"])
+   
+5. Loops - For Loop
+   for i in range(5):
+       print(i)
+   
+6. Loops - While Loop
+   count = 0
+   while count < 5:
+       count += 1
+   
+7. Conditional Statements
+   if x > 5:
+       print("Greater")
+   else:
+       print("Lesser")
+   
+8. Functions
+   def add(a, b):
+       return a + b
+   
+9. List Comprehension
+   squares = [x**2 for x in range(5)]
+   
+10. Exception Handling
+    try:
+        result = 10 / 0
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
