@@ -72,3 +72,14 @@ deterministic
 return amount*0.18;
 
 select tax(1000) as tax_amount;
+
+--- NOTE Trigger
+-- NOTE Audit table
+create table order_logs (
+    log_id int auto_increment primary key,
+    order_id int,
+    action_time timestamp
+);
+
+--- note mysql trigger
+create trigger after_order
