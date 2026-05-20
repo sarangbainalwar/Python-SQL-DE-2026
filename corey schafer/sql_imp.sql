@@ -82,4 +82,34 @@ create table order_logs (
 );
 
 --- note mysql trigger
-create trigger after_order
+create trigger after_order_insert
+after insert on orders
+for each row
+begin
+    insert into order_logs(order_id,action_time)
+    values (new.order_id,now());
+end
+
+insert into orders values 
+(6,105,'2025-01-05','Phone','Electronics',65000,2,'Delivered','East');
+
+SELECT * from order_logs;
+
+-- note coalesce Returns first non-null value.
+
+select order_id,COALESCE(status,'Unknown') as order_status
+from orders;
+
+--note partition: Splitting huge table into smaller physical chunks.NOT same as window partitioning.
+
+create table orders_partitioned (
+    order_id int,
+    order_date date,
+    amount decimal(10,2)
+)
+partition by range (year(order_date))(
+    partition p2024 values less than (2025),
+    partition p2025 values less than (2026)
+);
+
+select * from orders_partitioned
