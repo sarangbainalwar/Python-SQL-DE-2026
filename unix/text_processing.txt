@@ -1,0 +1,29 @@
+**Text Processing:**
+
+bash
+
+`# Count lines in file
+wc -l file.txt
+
+# Sort file contents
+sort file.txt
+sort -r file.txt       # Reverse sort
+sort -n numbers.txt    # Numeric sort
+
+# Remove duplicates
+uniq file.txt
+sort file.txt | uniq   # Sort then remove duplicates
+
+# Cut columns from CSV
+cut -d',' -f1,3 data.csv           # Get columns 1 and 3
+
+# awk for text processing (IMPORTANT)
+awk '{print $1}' file.txt          # Print first column
+awk -F',' '{print $2}' data.csv    # CSV column extraction
+awk '$3 > 100' data.txt            # Filter rows
+
+# sed for find/replace (IMPORTANT)
+sed 's/old/new/g' file.txt         # Replace text
+sed -i 's/old/new/g' file.txt      # Replace in-place`
+
+

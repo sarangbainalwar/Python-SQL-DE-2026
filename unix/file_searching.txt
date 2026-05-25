@@ -1,0 +1,11 @@
+**File Searching:**
+
+bash
+
+`find /path -name "*.csv"           # Find files by name
+find . -type f -name "*.log"       # Find log files
+grep "error" logfile.txt           # Search text in file
+grep -r "pattern" /directory       # Search in all files
+grep -i "error" file.txt           # Case-insensitive search`
+
+

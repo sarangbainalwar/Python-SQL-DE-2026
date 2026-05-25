@@ -1,0 +1,4 @@
+nano file.txt          # Simple text editor
+vim file.txt           # Advanced editor (learn basics)
+cat file.txt           # Print entire file
+more file.txt          # View file page by page
