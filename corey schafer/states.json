@@ -1,0 +1,28 @@
+{
+  "states": [
+    {
+      "name": "California",
+      "abbreviation": "CA",
+      "capital": "Sacramento",
+      "population_millions": 39.0
+    },
+    {
+      "name": "Texas",
+      "abbreviation": "TX",
+      "capital": "Austin",
+      "population_millions": 30.5
+    },
+    {
+      "name": "Florida",
+      "abbreviation": "FL",
+      "capital": "Tallahassee",
+      "population_millions": 22.6
+    },
+    {
+      "name": "New York",
+      "abbreviation": "NY",
+      "capital": "Albany",
+      "population_millions": 19.6
+    }
+  ]
+}

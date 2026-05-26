@@ -1,0 +1,24 @@
+{
+  "states": [
+    {
+      "name": "California",
+      "abbreviation": "CA",
+      "population_millions": 39.0
+    },
+    {
+      "name": "Texas",
+      "abbreviation": "TX",
+      "population_millions": 30.5
+    },
+    {
+      "name": "Florida",
+      "abbreviation": "FL",
+      "population_millions": 22.6
+    },
+    {
+      "name": "New York",
+      "abbreviation": "NY",
+      "population_millions": 19.6
+    }
+  ]
+}
