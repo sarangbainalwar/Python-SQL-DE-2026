@@ -13,6 +13,20 @@
             "name": "sarang_sql",
             "username": "root",
             "database": "practice_db"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "mysql",
+            "username": "root",
+            "database": "world"
         }
     ],
     "a-file-icon-vscode.arrowTheme": "triangle"
