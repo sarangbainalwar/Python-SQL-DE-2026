@@ -113,3 +113,69 @@ partition by range (year(order_date))(
 );
 
 select * from orders_partitioned
+
+-- Note : DML, DCL, DCL and TCL
+
+-- Note : 1️⃣ DDL (Data Definition Language) DDL is used to create, modify, and delete database structures.Think:Table structure, schema, indexes, constraints CREATE,ALTER,DROP,TRUNCATE,RENAME
+
+create table employees (
+    emp_id int primary key,
+    emp_name varchar(100),
+    salary decimal(10,2)
+);
+
+alter table employees
+add department varchar(40);
+
+desc employees;
+
+alter table employees 
+modify salary decimal(12,2);
+
+drop table employees;       
+
+-- NOTE : 2️⃣ DML (Data Manipulation Language)DML works with the actual data inside tables.Think:Insert, update, delete, retrieve data
+
+insert into employees 
+values (1,'sarang',50000);
+
+select * from employees;
+
+update employees SET salary = 60000 where emp_id = 1;
+
+delete from employees where emp_id = 1;
+
+--NOTE 3️⃣ DCL (Data Control Language)
+
+--NOTE Controls who can access what.
+
+--NOTE Used mostly by:
+
+--NOTE DBAs
+--NOTE Database administrators
+--NOTE Security teams
+
+grant select on employees to analyst_user;
+
+grant select,insert on employees to analyst_user;
+
+revoke insert on employees from analyst_user;
+
+
+--NOTE 4️⃣ TCL (Transaction Control Language)
+
+-- Very important for Data Engineering and Backend interviews.
+
+-- Controls transactions.
+
+start transaction;
+
+update accounts SET balance=balance-1000 where id = 1;
+
+savepoint sp1;
+
+update accounts set balance = balance+1000 where id = 2;
+
+rollback to sp1;
+
+commit;
