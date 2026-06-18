@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Roadmap with Free Resources</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5, #00d2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .phase-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .phase-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .phase-btn:hover, .phase-btn.active {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,210,255,0.4);
+        }
+        
+        .phase-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .phase-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(58,123,213,0.2));
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #00d2ff;
+        }
+        
+        .phase-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #00d2ff;
+        }
+        
+        .week-container {
+            margin-bottom: 30px;
+        }
+        
+        .week-header {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3a7bd5;
+        }
+        
+        .week-title {
+            font-size: 1.8em;
+            color: #00d2ff;
+            margin-bottom: 10px;
+        }
+        
+        .topic-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .topic-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateX(5px);
+        }
+        
+        .topic-title {
+            font-size: 1.3em;
+            color: #00d2ff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .duration-badge {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        
+        .resources-list {
+            margin-top: 15px;
+        }
+        
+        .resource-item {
+            background: rgba(58,123,213,0.2);
+            border-left: 3px solid #3a7bd5;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        
+        .resource-type {
+            display: inline-block;
+            background: #3a7bd5;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .youtube { background: #FF0000; }
+        .website { background: #4CAF50; }
+        .course { background: #FF9800; }
+        .practice { background: #9C27B0; }
+        
+        .resource-link {
+            display: block;
+            color: #00d2ff;
+            text-decoration: none;
+            margin-top: 8px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .resource-description {
+            margin-top: 8px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .practice-section {
+            background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(139,195,74,0.2));
+            border: 2px solid rgba(76,175,80,0.5);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .practice-section h4 {
+            color: #8BC34A;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .quick-links {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .quick-links h3 {
+            color: #00d2ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .quick-link-card {
+            background: rgba(58,123,213,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .quick-link-card:hover {
+            background: rgba(58,123,213,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,210,255,0.3);
+        }
+        
+        .icon {
+            font-size: 1.5em;
+            margin-right: 8px;
+        }
+        
+        .projects-showcase {
+            background: linear-gradient(135deg, rgba(156,39,176,0.2), rgba(233,30,99,0.2));
+            border: 2px solid rgba(156,39,176,0.5);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .project-item {
+            background: rgba(255,255,255,0.08);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .project-item h4 {
+            color: #E91E63;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-overview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+        
+        .month-1 { border-color: #4CAF50; }
+        .month-2 { border-color: #2196F3; }
+        .month-3 { border-color: #FF9800; }
+        .month-4 { border-color: #9C27B0; }
+        
+        .timeline-number {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .tips-box {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,152,0,0.2));
+            border: 2px solid rgba(255,215,0,0.5);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .tips-box h4 {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .phase-title {
+                font-size: 1.8em;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Complete ML Roadmap with Free Resources</h1>
+            <p style="font-size: 1.2em;">From Zero to Machine Learning Engineer - All Free Materials</p>
+            <p><strong>Duration:</strong> 6-8 Months | <strong>Cost:</strong> 100% FREE</p>
+        </div>
+        
+        <div class="quick-links">
+            <h3>🚀 Essential Platforms - Start Here</h3>
+            <div class="links-grid">
+                <a href="https://www.coursera.org/learn/machine-learning" class="quick-link-card" target="_blank">
+                    <span class="icon">🎓</span>
+                    <div><strong>Andrew Ng's ML Course</strong></div>
+                    <small>The gold standard</small>
+                </a>
+                <a href="https://www.kaggle.com/learn" class="quick-link-card" target="_blank">
+                    <span class="icon">🏆</span>
+                    <div><strong>Kaggle Learn</strong></div>
+                    <small>Hands-on practice</small>
+                </a>
+                <a href="https://www.youtube.com/@statquest" class="quick-link-card" target="_blank">
+                    <span class="icon">📊</span>
+                    <div><strong>StatQuest</strong></div>
+                    <small>Concepts explained simply</small>
+                </a>
+                <a href="https://www.youtube.com/@3blue1brown" class="quick-link-card" target="_blank">
+                    <span class="icon">🧮</span>
+                    <div><strong>3Blue1Brown</strong></div>
+                    <small>Math intuition</small>
+                </a>
+                <a href="https://scikit-learn.org/stable/tutorial/index.html" class="quick-link-card" target="_blank">
+                    <span class="icon">📚</span>
+                    <div><strong>Scikit-learn Docs</strong></div>
+                    <small>Official tutorials</small>
+                </a>
+                <a href="https://github.com/jakevdp/PythonDataScienceHandbook" class="quick-link-card" target="_blank">
+                    <span class="icon">📖</span>
+                    <div><strong>Python DS Handbook</strong></div>
+                    <small>Free online book</small>
+                </a>
+            </div>
+        </div>
+        
+        <div class="phase-nav">
+            <button class="phase-btn active" onclick="showPhase('month1')">Month 1</button>
+            <button class="phase-btn" onclick="showPhase('month2')">Month 2</button>
+            <button class="phase-btn" onclick="showPhase('month3-4')">Month 3-4</button>
+            <button class="phase-btn" onclick="showPhase('month5-6')">Month 5-6</button>
+            <button class="phase-btn" onclick="showPhase('month7-8')">Month 7-8</button>
+            <button class="phase-btn" onclick="showPhase('resources')">All Resources</button>
+        </div>
+
+        <!-- Month 1 -->
+        <div id="month1" class="phase-section active">
+            <div class="phase-header">
+                <h2 class="phase-title">📚 Month 1: Mathematics & ML Foundations</h2>
+                <p>Build the mathematical foundation and understand core ML concepts</p>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 1-2: Linear Algebra & Calculus</div>
+                    <p>Essential math for understanding ML algorithms</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🧮</span>
+                        Linear Algebra Fundamentals
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" class="resource-link" target="_blank">
+                                3Blue1Brown - Essence of Linear Algebra
+                            </a>
+                            <p class="resource-description">Visual, intuitive explanations of vectors, matrices, transformations. Best linear algebra series ever created. Watch all 16 videos (3-4 hours total).</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PL221E2BBF13BECF6C" class="resource-link" target="_blank">
+                                MIT OpenCourseWare - Linear Algebra
+                            </a>
+                            <p class="resource-description">Gilbert Strang's legendary course. Watch lectures 1-10 for ML essentials. Deep but worth it.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://www.khanacademy.org/math/linear-algebra" class="resource-link" target="_blank">
+                                Khan Academy - Linear Algebra
+                            </a>
+                            <p class="resource-description">Interactive practice problems. Complete "Vectors and spaces" and "Matrix transformations" sections.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-section">
+                        <h4>🔧 Practice Tasks:</h4>
+                        <ul>
+                            <li>Implement matrix operations in NumPy</li>
+                            <li>Solve 10 Khan Academy practice problems daily</li>
+                            <li>Visualize vector transformations using Python</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📈</span>
+                        Calculus for ML
+                        <span class="duration-badge">3-4 days</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" class="resource-link" target="_blank">
+                                3Blue1Brown - Essence of Calculus
+                            </a>
+                            <p class="resource-description">12 video series covering derivatives, chain rule, optimization. Focus on episodes 2, 3, 4, and 6 for ML.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://www.khanacademy.org/math/calculus-1" class="resource-link" target="_blank">
+                                Khan Academy - Calculus
+                            </a>
+                            <p class="resource-description">Focus on: Derivatives, Chain rule, Partial derivatives, Gradient descent basics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-section">
+                        <h4>🔧 Practice Tasks:</h4>
+                        <ul>
+                            <li>Calculate gradients manually for simple functions</li>
+                            <li>Implement gradient descent from scratch</li>
+                            <li>Visualize cost function optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 3-4: Statistics & Probability + ML Intro</div>
+                    <p>Statistical foundations and first ML concepts</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📊</span>
+                        Statistics & Probability
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/@statquest" class="resource-link" target="_blank">
+                                StatQuest with Josh Starmer - Main Channel
+                            </a>
+                            <p class="resource-description">Watch: Statistics Fundamentals playlist, Probability, Distributions, Hypothesis Testing. Best stats explanations on YouTube!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr" class="resource-link" target="_blank">
+                                CrashCourse - Statistics
+                            </a>
+                            <p class="resource-description">44 video series covering all statistics basics. Watch at 1.5x speed. Great for quick overview.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://seeing-theory.brown.edu/" class="resource-link" target="_blank">
+                                Seeing Theory - Visual Statistics
+                            </a>
+                            <p class="resource-description">Interactive visualizations of probability and statistics concepts. Amazing for building intuition.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🤖</span>
+                        Introduction to Machine Learning
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                                Andrew Ng - Machine Learning (Coursera)
+                            </a>
+                            <p class="resource-description">THE classic ML course. Week 1-2: Introduction, Linear Regression. Audit for free! This is mandatory.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" class="resource-link" target="_blank">
+                                3Blue1Brown - Neural Networks
+                            </a>
+                            <p class="resource-description">4-part series on neural networks. Watch Chapter 1 and 2 for now. Best visual explanation of how ML works.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=i_LwzRVP7bg" class="resource-link" target="_blank">
+                                StatQuest - Machine Learning Fundamentals
+                            </a>
+                            <p class="resource-description">Watch the entire ML fundamentals playlist. Short, clear explanations of key concepts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px;">🎯 Month 1 Projects</h3>
+                <div class="project-item">
+                    <h4>1. Linear Regression from Scratch</h4>
+                    <p>Implement linear regression without using sklearn. Use only NumPy. Calculate gradients manually.</p>
+                    <p><strong>Dataset:</strong> Simple house prices or any regression dataset from Kaggle</p>
+                </div>
+                <div class="project-item">
+                    <h4>2. Statistical Analysis Report</h4>
+                    <p>Take a dataset, perform complete statistical analysis, create visualizations, write insights.</p>
+                    <p><strong>Dataset:</strong> Titanic or any Kaggle beginner dataset</p>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4>💡 Month 1 Success Tips:</h4>
+                <ul>
+                    <li>Don't skip the math - it's crucial for understanding WHY algorithms work</li>
+                    <li>Watch 3Blue1Brown at regular speed, pause and take notes</li>
+                    <li>Code every concept you learn in Python/NumPy</li>
+                    <li>Join r/learnmachinelearning subreddit for community support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Month 2 -->
+        <div id="month2" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">🛠️ Month 2: Scikit-learn & Supervised Learning Basics</h2>
+                <p>Learn the tools and build your first ML models</p>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 1-2: Scikit-learn Mastery</div>
+                    <p>Master the most important ML library</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📚</span>
+                        Scikit-learn Fundamentals
+                        <span class="duration-badge">2 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.kaggle.com/learn/intro-to-machine-learning" class="resource-link" target="_blank">
+                                Kaggle - Intro to Machine Learning
+                            </a>
+                            <p class="resource-description">Hands-on course teaching sklearn basics. Complete all exercises. Takes 3-4 hours.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.kaggle.com/learn/intermediate-machine-learning" class="resource-link" target="_blank">
+                                Kaggle - Intermediate Machine Learning
+                            </a>
+                            <p class="resource-description">Missing values, categorical variables, pipelines, cross-validation. Essential skills!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://scikit-learn.org/stable/tutorial/index.html" class="resource-link" target="_blank">
+                                Scikit-learn Official Tutorial
+                            </a>
+                            <p class="resource-description">Read the entire "Getting Started" and "User Guide" sections. Bookmark for reference.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=0Lt9w-BxKFQ" class="resource-link" target="_blank">
+                                Keith Galli - Complete Sklearn Tutorial
+                            </a>
+                            <p class="resource-description">2-hour comprehensive tutorial covering sklearn from scratch to advanced.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-section">
+                        <h4>🔧 Practice Tasks:</h4>
+                        <ul>
+                            <li>Complete all Kaggle Learn exercises</li>
+                            <li>Build 3 different models on Iris dataset</li>
+                            <li>Create a data preprocessing pipeline</li>
+                            <li>Practice train-test split and cross-validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 3-4: Linear Models & Classification</div>
+                    <p>First real ML algorithms</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📊</span>
+                        Regression Algorithms
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=nk2CQITm_eo" class="resource-link" target="_blank">
+                                StatQuest - Linear Regression
+                            </a>
+                            <p class="resource-description">Crystal clear explanation of linear regression. Also watch Ridge, Lasso, and ElasticNet videos.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                                Andrew Ng ML Course - Week 2 & 3
+                            </a>
+                            <p class="resource-description">Linear Regression with multiple variables, polynomial regression, regularization.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=4b4MUYve_U8" class="resource-link" target="_blank">
+                                Krish Naik - Linear Regression Complete Playlist
+                            </a>
+                            <p class="resource-description">Multiple videos covering regression in depth with code examples.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🎯</span>
+                        Classification Algorithms
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=yIYKR4sgzI8" class="resource-link" target="_blank">
+                                StatQuest - Logistic Regression
+                            </a>
+                            <p class="resource-description">Best explanation of logistic regression. Also watch: Odds, Log Odds, Maximum Likelihood.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=N20rHxnZK-Y" class="resource-link" target="_blank">
+                                Krish Naik - Logistic Regression
+                            </a>
+                            <p class="resource-description">Practical implementation with code. Build your first classifier!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                                Andrew Ng ML Course - Week 3
+                            </a>
+                            <p class="resource-description">Classification, logistic regression, overfitting, regularization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px;">🎯 Month 2 Projects</h3>
+                <div class="project-item">
+                    <h4>1. House Price Prediction</h4>
+                    <p>Use regression to predict house prices. Compare Linear, Ridge, Lasso, and ElasticNet.</p>
+                    <p><strong>Dataset:</strong> Kaggle House Prices - Advanced Regression Techniques</p>
+                    <p><strong>Link:</strong> <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">https://www.kaggle.com/c/house-prices-advanced-regression-techniques</a></p>
+                </div>
+                <div class="project-item">
+                    <h4>2. Titanic Survival Prediction</h4>
+                    <p>Classic classification problem. Build logistic regression model, evaluate with accuracy, precision, recall.</p>
+                    <p><strong>Dataset:</strong> Kaggle Titanic</p>
+                    <p><strong>Link:</strong> <a href="https://www.kaggle.com/c/titanic" target="_blank">https://www.kaggle.com/c/titanic</a></p>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4>💡 Month 2 Success Tips:</h4>
+                <ul>
+                    <li>Kaggle Learn courses are FREE and extremely practical - complete them all</li>
+                    <li>Submit your first Kaggle competition (even if score is low)</li>
+                    <li>Learn to read sklearn documentation - it's your best friend</li>
+                    <li>Start building a GitHub portfolio - commit your code daily</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Month 3-4 -->
+        <div id="month3-4" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">🚀 Month 3-4: Advanced Supervised Learning</h2>
+                <p>Tree-based models, ensemble methods, and hyperparameter tuning</p>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 1-3: Tree-Based Models</div>
+                    <p>Decision Trees, Random Forests, Gradient Boosting</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🌳</span>
+                        Decision Trees & Random Forests
+                        <span class="duration-badge">1.5 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=_L39rN6gz7Y" class="resource-link" target="_blank">
+                                StatQuest - Decision Trees
+                            </a>
+                            <p class="resource-description">How decision trees work, Gini impurity, entropy. Watch the entire Decision Tree playlist.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ" class="resource-link" target="_blank">
+                                StatQuest - Random Forests
+                            </a>
+                            <p class="resource-description">Bootstrap aggregating, feature randomness, out-of-bag error. Essential for understanding RF.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=ok2s1vV9XW0" class="resource-link" target="_blank">
+                                Krish Naik - Decision Tree & Random Forest Playlist
+                            </a>
+                            <p class="resource-description">Practical implementation with multiple examples and code walkthroughs.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                                Andrew Ng ML Course - Week 6
+                            </a>
+                            <p class="resource-description">Bias vs variance, learning curves, debugging ML models.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">⚡</span>
+                        Gradient Boosting Machines
+                        <span class="duration-badge">1.5 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=3CC4N4z3GJc" class="resource-link" target="_blank">
+                                StatQuest - Gradient Boost Part 1
+                            </a>
+                            <p class="resource-description">How gradient boosting works step-by-step. Watch all 4 parts of the series.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=OtD8wVaFm6E" class="resource-link" target="_blank">
+                                StatQuest - XGBoost
+                            </a>
+                            <p class="resource-description">XGBoost explained clearly. Watch all 4 XGBoost videos.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=jxuNLH5dXCs" class="resource-link" target="_blank">
+                                Krish Naik - XGBoost Tutorial
+                            </a>
+                            <p class="resource-description">Practical XGBoost implementation with hyperparameter tuning.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html" class="resource-link" target="_blank">
+                                XGBoost Official Documentation
+                            </a>
+                            <p class="resource-description">Official tutorials and guides. Essential for mastering XGBoost parameters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 4-6: Advanced Techniques</div>
+                    <p>Feature engineering, hyperparameter tuning, model evaluation</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🎨</span>
+                        Feature Engineering
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.kaggle.com/learn/feature-engineering" class="resource-link" target="_blank">
+                                Kaggle - Feature Engineering
+                            </a>
+                            <p class="resource-description">Practical feature engineering techniques. Must-complete course!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=6WDFfaYtN6s" class="resource-link" target="_blank">
+                                Krish Naik - Feature Engineering Playlist
+                            </a>
+                            <p class="resource-description">Complete playlist covering all feature engineering techniques with examples.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">⚙️</span>
+                        Hyperparameter Tuning & Model Selection
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=Gol_qOgRqfA" class="resource-link" target="_blank">
+                                StatQuest - Cross Validation
+                            </a>
+                            <p class="resource-description">K-fold cross-validation explained perfectly. Essential for model evaluation.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=ttE0F7fghfk" class="resource-link" target="_blank">
+                                Krish Naik - Hyperparameter Tuning
+                            </a>
+                            <p class="resource-description">GridSearchCV, RandomizedSearchCV, practical examples.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📊</span>
+                        Advanced Model Evaluation
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=4jRBRDbJemM" class="resource-link" target="_blank">
+                                StatQuest - Confusion Matrix
+                            </a>
+                            <p class="resource-description">Accuracy, precision, recall, F1-score explained. Also watch ROC and AUC videos.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=xugjARegisk" class="resource-link" target="_blank">
+                                StatQuest - ROC and AUC
+                            </a>
+                            <p class="resource-description">Understanding ROC curves and AUC for classification evaluation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px;">🎯 Month 3-4 Projects</h3>
+                <div class="project-item">
+                    <h4>1. Customer Churn Prediction</h4>
+                    <p>Build multiple models (Decision Tree, Random Forest, XGBoost), compare performance, tune hyperparameters.</p>
+                    <p><strong>Dataset:</strong> Telco Customer Churn on Kaggle</p>
+                    <p><strong>Link:</strong> <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank">https://www.kaggle.com/datasets/blastchar/telco-customer-churn</a></p>
+                </div>
+                <div class="project-item">
+                    <h4>2. Credit Card Fraud Detection</h4>
+                    <p>Imbalanced classification problem. Practice handling imbalanced datasets, evaluation metrics.</p>
+                    <p><strong>Dataset:</strong> Credit Card Fraud Detection on Kaggle</p>
+                    <p><strong>Link:</strong> <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud</a></p>
+                </div>
+                <div class="project-item">
+                    <h4>3. Complete Kaggle Competition</h4>
+                    <p>Participate in any active beginner-friendly Kaggle competition. Aim for top 50%.</p>
+                    <p><strong>Link:</strong> <a href="https://www.kaggle.com/competitions" target="_blank">https://www.kaggle.com/competitions</a></p>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4>💡 Month 3-4 Success Tips:</h4>
+                <ul>
+                    <li>XGBoost is THE algorithm to master - it wins most competitions</li>
+                    <li>Feature engineering often matters more than algorithm choice</li>
+                    <li>Always use cross-validation - never trust single train-test split</li>
+                    <li>Read Kaggle competition winners' solutions - learn from the best</li>
+                    <li>Start documenting your projects on Medium or personal blog</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Month 5-6 -->
+        <div id="month5-6" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">🔍 Month 5-6: Unsupervised Learning & Deep Learning Basics</h2>
+                <p>Clustering, dimensionality reduction, and introduction to neural networks</p>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 1-3: Unsupervised Learning</div>
+                    <p>Clustering and dimensionality reduction techniques</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🎨</span>
+                        Clustering Algorithms
+                        <span class="duration-badge">2 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=4b5d3muPQmA" class="resource-link" target="_blank">
+                                StatQuest - K-means Clustering
+                            </a>
+                            <p class="resource-description">How K-means works, choosing K, elbow method.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=7xHsRkOdVwo" class="resource-link" target="_blank">
+                                StatQuest - Hierarchical Clustering
+                            </a>
+                            <p class="resource-description">Agglomerative clustering, dendrograms explained clearly.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=RDZUdRSDOok" class="resource-link" target="_blank">
+                                Krish Naik - Clustering Complete Playlist
+                            </a>
+                            <p class="resource-description">K-means, hierarchical, DBSCAN with practical implementations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">📉</span>
+                        Dimensionality Reduction
+                        <span class="duration-badge">1 week</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" class="resource-link" target="_blank">
+                                StatQuest - PCA (Principal Component Analysis)
+                            </a>
+                            <p class="resource-description">Best PCA explanation ever. Watch the entire PCA series (6 videos).</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=NEaUSP4YerM" class="resource-link" target="_blank">
+                                StatQuest - t-SNE
+                            </a>
+                            <p class="resource-description">t-SNE for visualization of high-dimensional data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 4-6: Introduction to Deep Learning</div>
+                    <p>Neural networks fundamentals</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">🧠</span>
+                        Neural Networks Basics
+                        <span class="duration-badge">3 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" class="resource-link" target="_blank">
+                                3Blue1Brown - Neural Networks Series
+                            </a>
+                            <p class="resource-description">4 video masterpiece on how neural networks work. Must watch!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.coursera.org/learn/neural-networks-deep-learning" class="resource-link" target="_blank">
+                                Andrew Ng - Deep Learning Specialization (Course 1)
+                            </a>
+                            <p class="resource-description">Neural Networks and Deep Learning. Audit for free. Week 1-2 essential.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=aircAruvnKk" class="resource-link" target="_blank">
+                                Sentdex - Neural Networks from Scratch
+                            </a>
+                            <p class="resource-description">Build neural networks from scratch in Python. Great for understanding.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type course">Course</span>
+                            <a href="https://www.kaggle.com/learn/intro-to-deep-learning" class="resource-link" target="_blank">
+                                Kaggle - Intro to Deep Learning
+                            </a>
+                            <p class="resource-description">Practical introduction using TensorFlow/Keras. Hands-on exercises.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://playground.tensorflow.org/" class="resource-link" target="_blank">
+                                TensorFlow Playground
+                            </a>
+                            <p class="resource-description">Interactive visualization of neural networks. Play with different architectures!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px;">🎯 Month 5-6 Projects</h3>
+                <div class="project-item">
+                    <h4>1. Customer Segmentation Analysis</h4>
+                    <p>Use K-means and hierarchical clustering. Create customer personas, business recommendations.</p>
+                    <p><strong>Dataset:</strong> Mall Customers or E-commerce data on Kaggle</p>
+                </div>
+                <div class="project-item">
+                    <h4>2. Anomaly Detection System</h4>
+                    <p>Implement isolation forest, clustering-based anomaly detection.</p>
+                    <p><strong>Dataset:</strong> Credit card fraud or network intrusion datasets</p>
+                </div>
+                <div class="project-item">
+                    <h4>3. MNIST Digit Classification</h4>
+                    <p>Build your first neural network. Use TensorFlow/Keras. Compare with traditional ML.</p>
+                    <p><strong>Dataset:</strong> MNIST (built into Keras)</p>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4>💡 Month 5-6 Success Tips:</h4>
+                <ul>
+                    <li>Unsupervised learning is crucial for real business problems</li>
+                    <li>PCA is used everywhere - master it thoroughly</li>
+                    <li>For deep learning, start with Keras - it's beginner-friendly</li>
+                    <li>Don't go too deep into DL yet - focus on fundamentals</li>
+                    <li>Practice clustering on real business datasets</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Month 7-8 -->
+        <div id="month7-8" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">🎯 Month 7-8: Specialized Topics & Deployment</h2>
+                <p>NLP, time series, model deployment, and portfolio building</p>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 1-2: Natural Language Processing</div>
+                    <p>Text processing and NLP basics</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">💬</span>
+                        NLP Fundamentals
+                        <span class="duration-badge">2 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=8S3qHHUKqYk" class="resource-link" target="_blank">
+                                Krish Naik - NLP Complete Playlist
+                            </a>
+                            <p class="resource-description">Tokenization, TF-IDF, word embeddings, sentiment analysis. Complete practical NLP course.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL" class="resource-link" target="_blank">
+                                Sentdex - NLP with Python
+                            </a>
+                            <p class="resource-description">Practical NLP implementations from scratch.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type website">Website</span>
+                            <a href="https://www.nltk.org/book/" class="resource-link" target="_blank">
+                                NLTK Book - Free Online
+                            </a>
+                            <p class="resource-description">Comprehensive NLP textbook. Read chapters 1-5.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 3-4: Time Series & Advanced Topics</div>
+                    <p>Forecasting and specialized techniques</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">⏰</span>
+                        Time Series Forecasting
+                        <span class="duration-badge">2 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=Prpu_U5tKkE" class="resource-link" target="_blank">
+                                Krish Naik - Time Series Complete Course
+                            </a>
+                            <p class="resource-description">ARIMA, seasonal decomposition, Prophet. Everything you need for forecasting.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=TvhaHPq6xLU" class="resource-link" target="_blank">
+                                ritvikmath - Time Series Playlist
+                            </a>
+                            <p class="resource-description">Mathematical explanations of time series concepts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <div class="week-header">
+                    <div class="week-title">Week 5-8: Deployment & Portfolio</div>
+                    <p>Taking models to production and building portfolio</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-title">
+                        <span class="icon">☁️</span>
+                        Model Deployment
+                        <span class="duration-badge">2 weeks</span>
+                    </div>
+                    
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=UbCWoMf80PY" class="resource-link" target="_blank">
+                                Krish Naik - ML Model Deployment with Flask
+                            </a>
+                            <p class="resource-description">Deploy ML models as web applications using Flask.</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=xl0N7tHiwlw" class="resource-link" target="_blank">
+                                Krish Naik - Deploy ML with Streamlit
+                            </a>
+                            <p class="resource-description">Quick deployment with Streamlit. Perfect for portfolio projects!</p>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <span class="resource-type youtube">YouTube</span>
+                            <a href="https://www.youtube.com/watch?v=Rv6UFGNmNZg" class="resource-link" target="_blank">
+                                Krish Naik - Docker for ML
+                            </a>
+                            <p class="resource-description">Containerize ML applications with Docker basics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px;">🎯 Month 7-8 Final Projects</h3>
+                <div class="project-item">
+                    <h4>1. Sentiment Analysis Application</h4>
+                    <p>Build complete sentiment analysis system. Deploy as web app with Streamlit.</p>
+                    <p><strong>Dataset:</strong> IMDb reviews, Twitter sentiment, or Amazon reviews</p>
+                </div>
+                <div class="project-item">
+                    <h4>2. Sales Forecasting Dashboard</h4>
+                    <p>Time series forecasting with interactive dashboard. Use Prophet or ARIMA.</p>
+                    <p><strong>Dataset:</strong> Retail sales data from Kaggle</p>
+                </div>
+                <div class="project-item">
+                    <h4>3. Complete End-to-End ML Project</h4>
+                    <p>Pick business problem, collect data, build model, deploy, document everything.</p>
+                    <p>This becomes your portfolio centerpiece!</p>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4>💡 Month 7-8 Success Tips:</h4>
+                <ul>
+                    <li>Focus on deploying at least 2 projects</li>
+                    <li>Document everything - write blog posts about your projects</li>
+                    <li>Create impressive GitHub README files</li>
+                    <li>Practice explaining your projects - prepare for interviews</li>
+                    <li>Connect with recruiters on LinkedIn, share your work</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- All Resources -->
+        <div id="resources" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">📚 Complete Resource Library</h2>
+                <p>All free resources organized by category</p>
+            </div>
+            
+            <div class="timeline-overview">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">🎥 Best YouTube Channels</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type youtube">Channel</span>
+                    <a href="https://www.youtube.com/@krishnaik06" class="resource-link" target="_blank">
+                        Krish Naik
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Complete end-to-end ML tutorials. Practical code implementations. Over 1000 ML videos.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type youtube">Channel</span>
+                    <a href="https://www.youtube.com/@3blue1brown" class="resource-link" target="_blank">
+                        3Blue1Brown
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Beautiful mathematical intuition. Essential for understanding deep learning.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type youtube">Channel</span>
+                    <a href="https://www.youtube.com/@sentdex" class="resource-link" target="_blank">
+                        Sentdex
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Practical ML projects, Python tutorials, building from scratch.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type youtube">Channel</span>
+                    <a href="https://www.youtube.com/@codebasics" class="resource-link" target="_blank">
+                        codebasics
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Beginner-friendly ML and data science tutorials in simple language.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type youtube">Channel</span>
+                    <a href="https://www.youtube.com/@ritvikmath" class="resource-link" target="_blank">
+                        ritvikmath
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Statistical foundations explained visually and intuitively.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-overview" style="margin-top: 30px;">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">🎓 Free Online Courses</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                        Andrew Ng - Machine Learning (Coursera)
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> 11 weeks | <strong>Status:</strong> Audit for free | <strong>Why:</strong> THE classic. Everyone starts here.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.coursera.org/specializations/deep-learning" class="resource-link" target="_blank">
+                        Andrew Ng - Deep Learning Specialization
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> 5 courses | <strong>Status:</strong> Audit for free | <strong>Why:</strong> Best deep learning introduction.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.fast.ai/" class="resource-link" target="_blank">
+                        Fast.ai - Practical Deep Learning
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> Self-paced | <strong>Status:</strong> 100% Free | <strong>Why:</strong> Top-down approach, very practical.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.kaggle.com/learn" class="resource-link" target="_blank">
+                        Kaggle Learn - All Courses
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> 2-4 hours each | <strong>Status:</strong> 100% Free | <strong>Why:</strong> Hands-on, practical. Complete all of them!</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.udacity.com/course/intro-to-machine-learning--ud120" class="resource-link" target="_blank">
+                        Udacity - Intro to Machine Learning
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> 10 weeks | <strong>Status:</strong> Free | <strong>Why:</strong> Project-based learning approach.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type course">Course</span>
+                    <a href="https://www.edx.org/learn/machine-learning" class="resource-link" target="_blank">
+                        MIT - Introduction to Computational Thinking
+                    </a>
+                    <p class="resource-description"><strong>Duration:</strong> Self-paced | <strong>Status:</strong> Free audit | <strong>Why:</strong> Strong mathematical foundations.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-overview" style="margin-top: 30px;">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">📖 Free Books & Documentation</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Book</span>
+                    <a href="https://github.com/jakevdp/PythonDataScienceHandbook" class="resource-link" target="_blank">
+                        Python Data Science Handbook
+                    </a>
+                    <p class="resource-description">Complete book available free online. Covers NumPy, Pandas, Matplotlib, Scikit-learn.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Book</span>
+                    <a href="http://www.deeplearningbook.org/" class="resource-link" target="_blank">
+                        Deep Learning Book (Ian Goodfellow)
+                    </a>
+                    <p class="resource-description">The deep learning bible. Free online. Reference material for advanced concepts.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Book</span>
+                    <a href="https://www.statlearning.com/" class="resource-link" target="_blank">
+                        Introduction to Statistical Learning (ISLR)
+                    </a>
+                    <p class="resource-description">Free PDF available. Excellent for statistical foundations of ML.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Book</span>
+                    <a href="https://d2l.ai/" class="resource-link" target="_blank">
+                        Dive into Deep Learning
+                    </a>
+                    <p class="resource-description">Interactive deep learning book with code. Free online, constantly updated.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Docs</span>
+                    <a href="https://scikit-learn.org/stable/user_guide.html" class="resource-link" target="_blank">
+                        Scikit-learn User Guide
+                    </a>
+                    <p class="resource-description">Official documentation. Your go-to reference for all sklearn algorithms.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-overview" style="margin-top: 30px;">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">🏆 Practice Platforms</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type practice">Platform</span>
+                    <a href="https://www.kaggle.com/" class="resource-link" target="_blank">
+                        Kaggle
+                    </a>
+                    <p class="resource-description">Competitions, datasets, notebooks, courses. Your main practice platform. Aim for Kaggle Expert rank.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type practice">Platform</span>
+                    <a href="https://leetcode.com/problemset/database/" class="resource-link" target="_blank">
+                        LeetCode - ML/Data Problems
+                    </a>
+                    <p class="resource-description">Pandas problems, SQL questions. Great for interview prep.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type practice">Platform</span>
+                    <a href="https://www.hackerrank.com/domains/ai" class="resource-link" target="_blank">
+                        HackerRank - AI Section
+                    </a>
+                    <p class="resource-description">ML problems and challenges. Good for practicing implementations.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type practice">Platform</span>
+                    <a href="https://www.drivendata.org/competitions/" class="resource-link" target="_blank">
+                        DrivenData
+                    </a>
+                    <p class="resource-description">ML competitions for social good. Real-world problems.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-overview" style="margin-top: 30px;">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">🛠️ Interactive Learning Tools</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Tool</span>
+                    <a href="https://playground.tensorflow.org/" class="resource-link" target="_blank">
+                        TensorFlow Playground
+                    </a>
+                    <p class="resource-description">Visualize neural networks in action. Play with architectures interactively.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Tool</span>
+                    <a href="https://poloclub.github.io/cnn-explainer/" class="resource-link" target="_blank">
+                        CNN Explainer
+                    </a>
+                    <p class="resource-description">Interactive visualization of convolutional neural networks.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Tool</span>
+                    <a href="https://distill.pub/" class="resource-link" target="_blank">
+                        Distill.pub
+                    </a>
+                    <p class="resource-description">Beautiful, interactive ML explanations. High-quality research articles.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Tool</span>
+                    <a href="https://seeing-theory.brown.edu/" class="resource-link" target="_blank">
+                        Seeing Theory
+                    </a>
+                    <p class="resource-description">Interactive probability and statistics visualizations.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-overview" style="margin-top: 30px;">
+                <h3 style="color: #00d2ff; margin-bottom: 25px;">👥 Communities & Forums</h3>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Community</span>
+                    <a href="https://www.reddit.com/r/learnmachinelearning/" class="resource-link" target="_blank">
+                        r/learnmachinelearning
+                    </a>
+                    <p class="resource-description">Supportive community for ML learners. Ask questions, share progress.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Community</span>
+                    <a href="https://www.reddit.com/r/MachineLearning/" class="resource-link" target="_blank">
+                        r/MachineLearning
+                    </a>
+                    <p class="resource-description">Latest ML research and discussions. Stay updated on trends.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Community</span>
+                    <a href="https://www.kaggle.com/discussions" class="resource-link" target="_blank">
+                        Kaggle Forums
+                    </a>
+                    <p class="resource-description">Dataset discussions, competition forums, learn from winners.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type website">Community</span>
+                    <a href="https://stackoverflow.com/questions/tagged/machine-learning" class="resource-link" target="_blank">
+                        Stack Overflow - ML Tag
+                    </a>
+                    <p class="resource-description">Technical questions and answers. Search before asking!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-overview" style="margin-top: 40px;">
+            <h3 style="color: #00d2ff; text-align: center; margin-bottom: 30px;">🗺️ Your 8-Month Learning Journey</h3>
+            
+            <div class="timeline-step month-1">
+                <div class="timeline-number">1</div>
+                <div>
+                    <h4>Month 1: Foundations</h4>
+                    <p><strong>Focus:</strong> Math (Linear Algebra, Calculus, Statistics) + ML Introduction</p>
+                    <p><strong>Time:</strong> 2-3 hours daily</p>
+                    <p><strong>Key Resources:</strong> 3Blue1Brown, StatQuest, Andrew Ng Week 1-2</p>
+                </div>
+            </div>
+            
+            <div class="timeline-step month-1">
+                <div class="timeline-number">2</div>
+                <div>
+                    <h4>Month 2: Scikit-learn & Basic Models</h4>
+                    <p><strong>Focus:</strong> Scikit-learn mastery, Linear models, Classification basics</p>
+                    <p><strong>Time:</strong> 3-4 hours daily</p>
+                    <p><strong>Key Resources:</strong> Kaggle Learn, Sklearn docs, Andrew Ng Week 3-4</p>
+                </div>
+            </div>
+            
+            <div class="timeline-step month-2">
+                <div class="timeline-number">3-4</div>
+                <div>
+                    <h4>Month 3-4: Advanced Supervised Learning</h4>
+                    <p><strong>Focus:</strong> Tree models, Random Forest, XGBoost, Feature engineering</p>
+                    <p><strong>Time:</strong> 3-4 hours daily</p>
+                    <p><strong>Key Resources:</strong> StatQuest trees series, Kaggle competitions, Krish Naik</p>
+                </div>
+            </div>
+            
+            <div class="timeline-step month-3">
+                <div class="timeline-number">5-6</div>
+                <div>
+                    <h4>Month 5-6: Unsupervised & Deep Learning</h4>
+                    <p><strong>Focus:</strong> Clustering, PCA, Neural networks introduction</p>
+                    <p><strong>Time:</strong> 3-4 hours daily</p>
+                    <p><strong>Key Resources:</strong> 3Blue1Brown NN series, Deep Learning Specialization, Kaggle DL</p>
+                </div>
+            </div>
+            
+            <div class="timeline-step month-4">
+                <div class="timeline-number">7-8</div>
+                <div>
+                    <h4>Month 7-8: Specialization & Portfolio</h4>
+                    <p><strong>Focus:</strong> NLP, Time series, Deployment, Portfolio projects</p>
+                    <p><strong>Time:</strong> 4-5 hours daily</p>
+                    <p><strong>Key Resources:</strong> Krish Naik NLP/deployment, Streamlit, Your original projects!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(58,123,213,0.2)); border-radius: 20px; border: 2px solid rgba(0,210,255,0.5);">
+            <h2 style="color: #00d2ff; font-size: 2.5em; margin-bottom: 20px;">🎉 Your ML Journey Starts Today!</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">Remember: All these resources are 100% FREE!</p>
+            <p style="font-size: 1.2em; margin: 20px 0;">Consistency is key - 2-3 hours daily beats 10 hours on weekends</p>
+            
+            <div style="margin-top: 40px; padding: 25px; background: rgba(76,175,80,0.2); border-radius: 15px; border: 2px solid rgba(76,175,80,0.5);">
+                <h3 style="color: #8BC34A; margin-bottom: 15px;">📋 Your Action Plan for Tomorrow:</h3>
+                <ol style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1.1em;">
+                    <li style="margin-bottom: 10px;">Subscribe to StatQuest, 3Blue1Brown, and Krish Naik on YouTube</li>
+                    <li style="margin-bottom: 10px;">Create accounts on Kaggle and GitHub</li>
+                    <li style="margin-bottom: 10px;">Enroll in Andrew Ng's ML course (audit for free)</li>
+                    <li style="margin-bottom: 10px;">Watch first 3Blue1Brown Linear Algebra video</li>
+                    <li style="margin-bottom: 10px;">Join r/learnmachinelearning community</li>
+                    <li style="margin-bottom: 10px;">Set up your daily learning schedule</li>
+                </ol>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 1.3em; color: #FFD700;"><strong>Goal:</strong> Data Scientist role within 8-10 months!</p>
+            <p style="font-size: 1.1em; margin-top: 15px;">You've got this! 💪</p>
+        </div>
+    </div>
+    
+    <script>
+        function showPhase(phaseId) {
+            // Hide all phases
+            const phases = document.querySelectorAll('.phase-section');
+            phases.forEach(phase => phase.classList.remove('active'));
+            
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.phase-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected phase
+            document.getElementById(phaseId).classList.add('active');
+            
+            // Activate clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html> youtube">Channel</span>
+                    <a href="https://www.youtube.com/@statquest" class="resource-link" target="_blank">
+                        StatQuest with Josh Starmer
+                    </a>
+                    <p class="resource-description"><strong>Why:</strong> Best ML concept explanations. Watch for every algorithm you learn.</p>
+                </div>
+                
+                <div class="resource-item">
+                    <span class="resource-type

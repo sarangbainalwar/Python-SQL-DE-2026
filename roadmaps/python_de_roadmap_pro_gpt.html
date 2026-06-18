@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python DE Roadmap Pro</title>
+<style>
+body { font-family: Arial; background:#f4f6f8; margin:20px;}
+h1{text-align:center;}
+.week{background:#fff;padding:15px;margin:10px 0;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.progress-container{background:#ddd;border-radius:20px;margin:15px 0;}
+.progress-bar{height:20px;background:#4caf50;width:0%;border-radius:20px;text-align:center;color:#fff;}
+.task{margin:5px 0;}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 Python for Data Engineering (Pro Tracker)</h1>
+
+<div class="progress-container">
+<div id="progressBar" class="progress-bar">0%</div>
+</div>
+
+<div id="roadmap"></div>
+
+<script>
+const roadmap = [
+{week:"Week 1", tasks:["Variables & Data Types","Operators & Strings","Mini Project"]},
+{week:"Week 2", tasks:["If-Else","Loops","Functions"]},
+{week:"Week 3", tasks:["Lists","Dictionaries","Comprehensions"]},
+{week:"Week 4", tasks:["File Handling","CSV & JSON","Error Handling"]},
+{week:"Week 5", tasks:["Pandas Basics","Filtering","Sorting"]},
+{week:"Week 6", tasks:["GroupBy","Merge","Pivot"]},
+{week:"Week 7", tasks:["API Handling","JSON Parsing","Database Insert"]},
+{week:"Week 8", tasks:["Logging","ETL Script","Automation"]},
+{week:"Week 9-10", tasks:["NumPy","Testing","Final Project"]}
+];
+
+let container = document.getElementById("roadmap");
+
+roadmap.forEach((w,i)=>{
+    let div = document.createElement("div");
+    div.className="week";
+    let html = `<h3>${w.week}</h3>`;
+    w.tasks.forEach((t,j)=>{
+        let id = `w${i}_t${j}`;
+        let checked = localStorage.getItem(id) === "true" ? "checked" : "";
+        html += `<div class="task">
+        <input type="checkbox" id="${id}" ${checked} onchange="saveCheck('${id}')">
+        ${t}
+        </div>`;
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+});
+
+function saveCheck(id){
+    let val = document.getElementById(id).checked;
+    localStorage.setItem(id,val);
+    updateProgress();
+}
+
+function updateProgress(){
+    let total = document.querySelectorAll("input[type=checkbox]").length;
+    let done = document.querySelectorAll("input[type=checkbox]:checked").length;
+    let percent = Math.round((done/total)*100);
+    let bar = document.getElementById("progressBar");
+    bar.style.width = percent + "%";
+    bar.innerText = percent + "%";
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>
