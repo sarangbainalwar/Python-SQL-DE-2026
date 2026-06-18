@@ -76,3 +76,10 @@ Treat these as integration/portfolio work, not new concepts:
 | Last | Week 10 projects, in order 1→2→3 | Portfolio/integration phase |
 
 Want me to turn this into a checklist artifact you can track progress on, or a visual roadmap/timeline?
+
+
+Weeks 7-9 (this roadmap)  →  Week 10 projects  →  PySpark  →  Airflow
+                                                      ↘            ↗
+                                                   (can overlap — many people
+                                                    learn these in parallel
+                                                    once Pandas/ETL is solid)
