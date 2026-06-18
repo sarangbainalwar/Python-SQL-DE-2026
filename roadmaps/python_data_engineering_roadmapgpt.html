@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Data Engineering Roadmap</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f5f7fa; }
+h1 { text-align: center; }
+.week { background: white; margin-bottom: 15px; border-radius: 8px; padding: 15px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.content { display: none; margin-top: 10px; }
+ul { margin-left: 20px; }
+a { color: #1a73e8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
+<script>
+function toggleContent(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+</head>
+<body>
+
+<h1>🐍 Python for Data Engineering Roadmap</h1>
+
+<div class="week" onclick="toggleContent('w1')">
+<h2>Week 1: Python Fundamentals</h2>
+<div class="content" id="w1">
+<ul>
+<li>Variables, Data Types, Operators, Strings</li>
+<li>Resources:
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/">Python Docs</a></li>
+<li><a href="https://www.w3schools.com/python/">W3Schools</a></li>
+<li><a href="https://www.learnpython.org/">LearnPython</a></li>
+</ul></li>
+<li>Project: Calculator, Temperature Converter</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w2')">
+<h2>Week 2: Control Flow & Functions</h2>
+<div class="content" id="w2">
+<ul>
+<li>If/Else, Loops, Functions, Lambda</li>
+<li><a href="https://realpython.com/defining-your-own-python-function/">Functions Guide</a></li>
+<li>Project: Number Guessing Game</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w3')">
+<h2>Week 3: Data Structures</h2>
+<div class="content" id="w3">
+<ul>
+<li>Lists, Dictionaries, Sets, Comprehensions</li>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html">Docs</a></li>
+<li>Project: Contact Book</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w4')">
+<h2>Week 4: File Handling & Error Handling</h2>
+<div class="content" id="w4">
+<ul>
+<li>CSV, JSON, try/except</li>
+<li><a href="https://realpython.com/read-write-files-python/">Files Guide</a></li>
+<li>Project: CSV Cleaner</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w5')">
+<h2>Week 5: Pandas Basics</h2>
+<div class="content" id="w5">
+<ul>
+<li>DataFrames, Filtering, Sorting</li>
+<li><a href="https://www.kaggle.com/learn/pandas">Kaggle Pandas</a></li>
+<li>Project: Sales Analysis</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w6')">
+<h2>Week 6: Pandas Advanced</h2>
+<div class="content" id="w6">
+<ul>
+<li>GroupBy, Merge, Pivot</li>
+<li><a href="https://realpython.com/pandas-groupby/">GroupBy Guide</a></li>
+<li>Project: Dataset Analysis</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w7')">
+<h2>Week 7: APIs & Databases</h2>
+<div class="content" id="w7">
+<ul>
+<li>Requests, JSON, SQLAlchemy</li>
+<li><a href="https://realpython.com/api-integration-in-python/">API Guide</a></li>
+<li>Project: Weather API Pipeline</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w8')">
+<h2>Week 8: Data Engineering Python</h2>
+<div class="content" id="w8">
+<ul>
+<li>Logging, ETL, CLI</li>
+<li><a href="https://realpython.com/python-logging/">Logging Guide</a></li>
+<li>Project: ETL Pipeline</li>
+</ul>
+</div>
+</div>
+
+<div class="week" onclick="toggleContent('w9')">
+<h2>Week 9-10: Advanced + Projects</h2>
+<div class="content" id="w9">
+<ul>
+<li>NumPy, Testing, Parquet</li>
+<li><a href="https://numpy.org/doc/">NumPy Docs</a></li>
+<li>Projects: Full Data Pipelines</li>
+</ul>
+</div>
+</div>
+
+</body>
+</html>

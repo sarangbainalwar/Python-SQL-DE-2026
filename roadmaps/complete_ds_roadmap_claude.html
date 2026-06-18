@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Data Science Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .duration-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .duration-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 25px;
+        }
+        
+        .quick-start {
+            background: rgba(255,215,0,0.2);
+            border: 2px solid rgba(255,215,0,0.5);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .quick-link {
+            background: rgba(102,126,234,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: block;
+        }
+        
+        .quick-link:hover {
+            background: rgba(102,126,234,0.5);
+            transform: translateY(-3px);
+        }
+        
+        .roadmap-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,215,0,0.3);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+        }
+        
+        .phase-content {
+            display: none;
+        }
+        
+        .phase-content.active {
+            display: block;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,152,0,0.2));
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFD700;
+        }
+        
+        .phase-title {
+            font-size: 2.5em;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .step-container {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .step-title {
+            font-size: 1.8em;
+            color: #FFD700;
+            flex: 1;
+        }
+        
+        .step-duration {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .skill-name {
+            font-size: 1.3em;
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .resource-item {
+            background: rgba(102,126,234,0.3);
+            border-left: 3px solid #667eea;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        
+        .resource-type {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .youtube { background: #FF0000; }
+        .course { background: #FF9800; }
+        .website { background: #4CAF50; }
+        .practice { background: #9C27B0; }
+        
+        .resource-link {
+            display: block;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        
+        .resource-link:hover {
+            color: #fff;
+        }
+        
+        .resource-desc {
+            opacity: 0.9;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+        
+        .project-showcase {
+            background: linear-gradient(135deg, rgba(156,39,176,0.2), rgba(233,30,99,0.2));
+            border: 2px solid rgba(156,39,176,0.5);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .beginner { background: #4CAF50; }
+        .intermediate { background: #FF9800; }
+        .advanced { background: #F44336; }
+        
+        .tips-box {
+            background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(139,195,74,0.2));
+            border: 2px solid rgba(76,175,80,0.5);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .timeline-visual {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border-left: 4px solid;
+        }
+        
+        .month-1 { border-color: #4CAF50; }
+        .month-2 { border-color: #2196F3; }
+        .month-3 { border-color: #FF9800; }
+        .month-4 { border-color: #9C27B0; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .skill-grid, .projects-grid, .quick-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🚀 Complete Data Science Roadmap</h1>
+            <p style="font-size: 1.3em; margin: 15px 0;">From Absolute Beginner to Job-Ready Data Scientist</p>
+            <p style="font-size: 1.1em;">Step-by-step guide with 100% FREE resources</p>
+            
+            <div class="duration-info">
+                <div class="duration-item">
+                    <strong>⏱️ Duration:</strong> 10-12 Months
+                </div>
+                <div class="duration-item">
+                    <strong>💰 Cost:</strong> $0 (100% Free)
+                </div>
+                <div class="duration-item">
+                    <strong>📚 Time/Day:</strong> 2-4 Hours
+                </div>
+            </div>
+        </div>
+        
+        <div class="quick-start">
+            <h2 style="color: #FFD700; text-align: center; margin-bottom: 25px;">🎯 Essential Platforms</h2>
+            <div class="quick-links">
+                <a href="https://www.youtube.com/@krishnaik06" class="quick-link" target="_blank">
+                    <div style="font-size: 2em;">📺</div>
+                    <strong>Krish Naik</strong>
+                    <div style="font-size: 0.9em; margin-top: 5px;">Complete DS tutorials</div>
+                </a>
+                <a href="https://www.kaggle.com/learn" class="quick-link" target="_blank">
+                    <div style="font-size: 2em;">🏆</div>
+                    <strong>Kaggle Learn</strong>
+                    <div style="font-size: 0.9em; margin-top: 5px;">Hands-on courses</div>
+                </a>
+                <a href="https://www.youtube.com/@statquest" class="quick-link" target="_blank">
+                    <div style="font-size: 2em;">📊</div>
+                    <strong>StatQuest</strong>
+                    <div style="font-size: 0.9em; margin-top: 5px;">Concepts simplified</div>
+                </a>
+                <a href="https://www.coursera.org/learn/machine-learning" class="quick-link" target="_blank">
+                    <div style="font-size: 2em;">🎓</div>
+                    <strong>Andrew Ng ML</strong>
+                    <div style="font-size: 0.9em; margin-top: 5px;">Gold standard</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="roadmap-nav">
+            <button class="nav-btn active" onclick="showPhase('phase1')">Foundations (1-2m)</button>
+            <button class="nav-btn" onclick="showPhase('phase2')">Python DS (3-4m)</button>
+            <button class="nav-btn" onclick="showPhase('phase3')">Data Analysis (5-6m)</button>
+            <button class="nav-btn" onclick="showPhase('phase4')">Machine Learning (7-8m)</button>
+            <button class="nav-btn" onclick="showPhase('phase5')">Advanced ML (9-10m)</button>
+            <button class="nav-btn" onclick="showPhase('phase6')">Deployment (11-12m)</button>
+            <button class="nav-btn" onclick="showPhase('timeline')">Full Timeline</button>
+        </div>
+
+        <!-- Phase 1 -->
+        <div id="phase1" class="phase-content active">
+            <div class="phase-header">
+                <h2 class="phase-title">📚 Phase 1: Foundations (Month 1-2)</h2>
+                <p style="font-size: 1.2em;">Python programming, mathematics, and essential tools</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Python Programming</div>
+                    <div class="step-duration">3 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">Python Basics</div>
+                        <p>Variables, data types, control flow, functions</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" class="resource-link" target="_blank">
+                                    Python Full Course - Programming with Mosh
+                                </a>
+                                <p class="resource-desc">6-hour complete Python course. Perfect starting point.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/python" class="resource-link" target="_blank">
+                                    Kaggle - Python Course (FREE)
+                                </a>
+                                <p class="resource-desc">Interactive Python course with exercises.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type practice">Practice</span>
+                                <a href="https://www.hackerrank.com/domains/python" class="resource-link" target="_blank">
+                                    HackerRank - Python Problems
+                                </a>
+                                <p class="resource-desc">Solve 50+ problems to build skills.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">Data Structures</div>
+                        <p>Lists, dictionaries, tuples, sets</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=pkYVOmU3MgA" class="resource-link" target="_blank">
+                                    Data Structures in Python - freeCodeCamp
+                                </a>
+                                <p class="resource-desc">13-hour comprehensive course.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/playlist?list=PLeo1K3hjS3uu_n_a__MI_KktGTLYopZ12" class="resource-link" target="_blank">
+                                    codebasics - Python DS Playlist
+                                </a>
+                                <p class="resource-desc">Easy explanations for beginners.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Mathematics</div>
+                    <div class="step-duration">3 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">Statistics & Probability</div>
+                        <p>Essential for data analysis</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/@statquest" class="resource-link" target="_blank">
+                                    StatQuest - Statistics Fundamentals
+                                </a>
+                                <p class="resource-desc">THE BEST statistics channel. Watch entire playlist.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type website">Website</span>
+                                <a href="https://www.khanacademy.org/math/statistics-probability" class="resource-link" target="_blank">
+                                    Khan Academy - Statistics
+                                </a>
+                                <p class="resource-desc">Interactive lessons with practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">Linear Algebra</div>
+                        <p>Vectors, matrices for ML</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" class="resource-link" target="_blank">
+                                    3Blue1Brown - Essence of Linear Algebra
+                                </a>
+                                <p class="resource-desc">Visual intuition. MUST WATCH!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 1 Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Business Dashboard</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Create Tableau/PowerBI dashboard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div id="phase4" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">🤖 Phase 4: Machine Learning (Month 7-8)</h2>
+                <p style="font-size: 1.2em;">Supervised learning, model evaluation</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-title">ML Fundamentals</div>
+                    <div class="step-duration">4 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">ML Basics & Scikit-learn</div>
+                        <p>Regression, classification, evaluation</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">
+                                    Andrew Ng - Machine Learning (FREE audit)
+                                </a>
+                                <p class="resource-desc">THE classic ML course. Week 1-4.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/intro-to-machine-learning" class="resource-link" target="_blank">
+                                    Kaggle - Intro to ML (FREE)
+                                </a>
+                                <p class="resource-desc">Hands-on sklearn practice.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/@statquest" class="resource-link" target="_blank">
+                                    StatQuest - ML Algorithms Playlist
+                                </a>
+                                <p class="resource-desc">Best algorithm explanations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">Tree Models & Ensemble</div>
+                        <p>Random Forest, XGBoost, boosting</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ" class="resource-link" target="_blank">
+                                    StatQuest - Random Forests
+                                </a>
+                                <p class="resource-desc">Clear RF explanation.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=OtD8wVaFm6E" class="resource-link" target="_blank">
+                                    StatQuest - XGBoost Series
+                                </a>
+                                <p class="resource-desc">Complete XGBoost guide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 4 Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">1. House Price Prediction</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Regression with feature engineering</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Customer Churn Prediction</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Classification with multiple models</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">3. Kaggle Competition</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Submit to real competition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 5 -->
+        <div id="phase5" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">🚀 Phase 5: Advanced ML (Month 9-10)</h2>
+                <p style="font-size: 1.2em;">Deep learning, NLP, time series</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <div class="step-title">Deep Learning & NLP</div>
+                    <div class="step-duration">8 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">Neural Networks</div>
+                        <p>TensorFlow/Keras basics</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" class="resource-link" target="_blank">
+                                    3Blue1Brown - Neural Networks
+                                </a>
+                                <p class="resource-desc">Visual NN explanation. MUST WATCH!</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.coursera.org/learn/neural-networks-deep-learning" class="resource-link" target="_blank">
+                                    Andrew Ng - Deep Learning (FREE audit)
+                                </a>
+                                <p class="resource-desc">Best deep learning intro.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/intro-to-deep-learning" class="resource-link" target="_blank">
+                                    Kaggle - Intro to Deep Learning
+                                </a>
+                                <p class="resource-desc">Hands-on Keras practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">NLP Basics</div>
+                        <p>Text processing, sentiment analysis</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=8S3qHHUKqYk" class="resource-link" target="_blank">
+                                    Krish Naik - NLP Complete Playlist
+                                </a>
+                                <p class="resource-desc">Comprehensive NLP guide.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL" class="resource-link" target="_blank">
+                                    Sentdex - NLP with Python
+                                </a>
+                                <p class="resource-desc">Practical NLP implementations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 5 Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">1. Image Classification</h4>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>CNN for image recognition</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Sentiment Analysis</h4>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>Analyze customer reviews</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">3. Time Series Forecast</h4>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>Sales/stock prediction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 6 -->
+        <div id="phase6" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">☁️ Phase 6: Deployment (Month 11-12)</h2>
+                <p style="font-size: 1.2em;">MLOps, deployment, portfolio</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">8</div>
+                    <div class="step-title">Model Deployment & Portfolio</div>
+                    <div class="step-duration">8 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">Deployment</div>
+                        <p>Flask, Streamlit, Docker basics</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=UbCWoMf80PY" class="resource-link" target="_blank">
+                                    Krish Naik - ML Deployment Flask
+                                </a>
+                                <p class="resource-desc">Deploy models with Flask.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=xl0N7tHiwlw" class="resource-link" target="_blank">
+                                    Streamlit ML Deployment
+                                </a>
+                                <p class="resource-desc">Quick deployment tutorial.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">Portfolio Building</div>
+                        <p>GitHub, projects, resume</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=1aXk2RViq3c" class="resource-link" target="_blank">
+                                    Ken Jee - Data Science Portfolio
+                                </a>
+                                <p class="resource-desc">Build impressive portfolio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 6 Final Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">1. End-to-End ML App</h4>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>Deploy complete ML application</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Portfolio Website</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Showcase all your projects</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">3. Capstone Project</h4>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>Original research/solution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div id="timeline" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">📅 Complete 12-Month Timeline</h2>
+                <p style="font-size: 1.2em;">Your journey from beginner to data scientist</p>
+            </div>
+            
+            <div class="timeline-visual">
+                <div class="timeline-item month-1">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">1-2</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 1-2: Foundations</h4>
+                        <p><strong>Focus:</strong> Python programming, statistics, linear algebra</p>
+                        <p><strong>Daily:</strong> 2-3 hours | <strong>Output:</strong> 3 basic projects</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item month-2">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">3-4</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 3-4: Python Data Science</h4>
+                        <p><strong>Focus:</strong> NumPy, Pandas, Matplotlib, Seaborn</p>
+                        <p><strong>Daily:</strong> 3-4 hours | <strong>Output:</strong> 2 EDA projects</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item month-3">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">5-6</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 5-6: Data Analysis</h4>
+                        <p><strong>Focus:</strong> SQL, Excel, Tableau, PowerBI</p>
+                        <p><strong>Daily:</strong> 3-4 hours | <strong>Output:</strong> 2 dashboard projects</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item month-4">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">7-8</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 7-8: Machine Learning</h4>
+                        <p><strong>Focus:</strong> Supervised learning, sklearn, tree models</p>
+                        <p><strong>Daily:</strong> 4 hours | <strong>Output:</strong> 3 ML projects + Kaggle</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item month-1">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">9-10</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 9-10: Advanced ML</h4>
+                        <p><strong>Focus:</strong> Deep learning, NLP, time series</p>
+                        <p><strong>Daily:</strong> 4 hours | <strong>Output:</strong> 3 advanced projects</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item month-2">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1em; font-weight: bold; margin-right: 20px; flex-shrink: 0;">11-12</div>
+                    <div>
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">Month 11-12: Deployment & Jobs</h4>
+                        <p><strong>Focus:</strong> MLOps, deployment, portfolio, job applications</p>
+                        <p><strong>Daily:</strong> 4-5 hours | <strong>Output:</strong> Portfolio + applications</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(139,195,74,0.2)); border: 2px solid rgba(76,175,80,0.5); border-radius: 15px; padding: 30px; margin-top: 30px;">
+                <h3 style="color: #8BC34A; margin-bottom: 20px; text-align: center;">📊 Expected Portfolio After 12 Months</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">✅ 15-20 Projects</h4>
+                        <p>Mix of analysis, ML, and deployment</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">✅ GitHub Portfolio</h4>
+                        <p>Professional presence with documentation</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">✅ Kaggle Profile</h4>
+                        <p>Competitions + contributions</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #FFD700; margin-bottom: 10px;">✅ Deployed Apps</h4>
+                        <p>2-3 live ML applications</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,152,0,0.2)); border: 2px solid rgba(255,215,0,0.5); border-radius: 15px; padding: 30px; margin-top: 30px;">
+                <h3 style="color: #FFD700; margin-bottom: 20px; text-align: center;">💡 Critical Success Factors</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #FFA500; margin-bottom: 10px;">🎯 Consistency</h4>
+                        <ul style="padding-left: 20px;">
+                            <li>Code daily, even if just 30 minutes</li>
+                            <li>Don't break the chain</li>
+                            <li>Quality over quantity</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #FFA500; margin-bottom: 10px;">🏗️ Build in Public</h4>
+                        <ul style="padding-left: 20px;">
+                            <li>Share progress on LinkedIn/Twitter</li>
+                            <li>Write blog posts about learning</li>
+                            <li>Engage with DS community</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #FFA500; margin-bottom: 10px;">🎓 Active Learning</h4>
+                        <ul style="padding-left: 20px;">
+                            <li>Don't just watch - do</li>
+                            <li>Type every code example</li>
+                            <li>Build projects immediately</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #FFA500; margin-bottom: 10px;">🤝 Community</h4>
+                        <ul style="padding-left: 20px;">
+                            <li>Join r/datascience, r/learnmachinelearning</li>
+                            <li>Attend virtual meetups</li>
+                            <li>Help others when you can</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 20px; border: 2px solid rgba(255,215,0,0.5);">
+            <h2 style="color: #FFD700; font-size: 2.5em; margin-bottom: 20px;">🎉 Ready to Start Your Journey?</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">All resources are 100% FREE!</p>
+            <p style="font-size: 1.2em; margin: 20px 0;">In 12 months, you'll be job-ready</p>
+            
+            <div style="background: rgba(76,175,80,0.2); border: 2px solid rgba(76,175,80,0.5); border-radius: 15px; padding: 25px; margin-top: 30px;">
+                <h3 style="color: #8BC34A; margin-bottom: 15px;">📋 Start Tomorrow:</h3>
+                <ol style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1.1em; padding-left: 30px;">
+                    <li style="margin-bottom: 10px;">Subscribe to StatQuest, Krish Naik, 3Blue1Brown</li>
+                    <li style="margin-bottom: 10px;">Create Kaggle and GitHub accounts</li>
+                    <li style="margin-bottom: 10px;">Watch first Python tutorial video</li>
+                    <li style="margin-bottom: 10px;">Join r/learnprogramming</li>
+                    <li style="margin-bottom: 10px;">Set daily 2-hour learning block</li>
+                </ol>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 1.3em; color: #FFD700;"><strong>Your Data Science career starts NOW! 💪</strong></p>
+        </div>
+    </div>
+    
+    <script>
+        function showPhase(phaseId) {
+            // Hide all phases
+            const phases = document.querySelectorAll('.phase-content');
+            phases.forEach(phase => {
+                phase.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected phase
+            const selectedPhase = document.getElementById(phaseId);
+            if (selectedPhase) {
+                selectedPhase.classList.add('active');
+            }
+            
+            // Activate clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>style="color: #FFD700;">1. Python Calculator</h4>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Build calculator with all operations</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Statistical Analysis</h4>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Calculate mean, median, mode from data</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">3. GitHub Profile</h4>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Create professional GitHub presence</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <h4 style="color: #8BC34A; margin-bottom: 15px;">💡 Phase 1 Tips</h4>
+                <ul style="padding-left: 20px;">
+                    <li>Code daily - consistency beats intensity</li>
+                    <li>Type every example, don't just watch</li>
+                    <li>Join r/learnpython community</li>
+                    <li>Start GitHub portfolio from day 1</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div id="phase2" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">🐍 Phase 2: Python for DS (Month 3-4)</h2>
+                <p style="font-size: 1.2em;">NumPy, Pandas, Matplotlib, Seaborn</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">NumPy & Pandas</div>
+                    <div class="step-duration">4 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">NumPy</div>
+                        <p>Array operations, mathematical functions</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=QUT1VHiLmmI" class="resource-link" target="_blank">
+                                    Complete NumPy Tutorial - Keith Galli
+                                </a>
+                                <p class="resource-desc">Comprehensive NumPy guide.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type website">Website</span>
+                                <a href="https://numpy.org/learn/" class="resource-link" target="_blank">
+                                    NumPy Official Tutorials
+                                </a>
+                                <p class="resource-desc">Official documentation and guides.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">Pandas</div>
+                        <p>Data manipulation and analysis</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/pandas" class="resource-link" target="_blank">
+                                    Kaggle - Pandas Course (FREE)
+                                </a>
+                                <p class="resource-desc">Hands-on pandas with exercises.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=vmEHCJofslg" class="resource-link" target="_blank">
+                                    Complete Pandas Tutorial - Keith Galli
+                                </a>
+                                <p class="resource-desc">1-hour comprehensive guide.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type practice">Practice</span>
+                                <a href="https://github.com/guipsamora/pandas_exercises" class="resource-link" target="_blank">
+                                    100+ Pandas Exercises (GitHub)
+                                </a>
+                                <p class="resource-desc">Practice problems with solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Data Visualization</div>
+                    <div class="step-duration">4 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">Matplotlib & Seaborn</div>
+                        <p>Create professional visualizations</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/data-visualization" class="resource-link" target="_blank">
+                                    Kaggle - Data Visualization
+                                </a>
+                                <p class="resource-desc">Free interactive course.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=DAQNHzOcO5A" class="resource-link" target="_blank">
+                                    Complete Matplotlib Tutorial - Corey Schafer
+                                </a>
+                                <p class="resource-desc">Full visualization course.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 2 Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">1. Exploratory Data Analysis</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Analyze Titanic dataset completely</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">2. Sales Dashboard</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Create interactive visualizations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div id="phase3" class="phase-content">
+            <div class="phase-header">
+                <h2 class="phase-title">📊 Phase 3: Data Analysis (Month 5-6)</h2>
+                <p style="font-size: 1.2em;">SQL, Excel, Tableau, PowerBI</p>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">SQL Mastery</div>
+                    <div class="step-duration">3 weeks</div>
+                </div>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">SQL Fundamentals</div>
+                        <p>Queries, joins, aggregations</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=HXV3zeQKqGY" class="resource-link" target="_blank">
+                                    SQL Full Course - freeCodeCamp
+                                </a>
+                                <p class="resource-desc">4-hour complete SQL tutorial.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type course">Course</span>
+                                <a href="https://www.kaggle.com/learn/intro-to-sql" class="resource-link" target="_blank">
+                                    Kaggle - Intro to SQL (FREE)
+                                </a>
+                                <p class="resource-desc">Hands-on SQL practice.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type practice">Practice</span>
+                                <a href="https://www.hackerrank.com/domains/sql" class="resource-link" target="_blank">
+                                    HackerRank - SQL Practice
+                                </a>
+                                <p class="resource-desc">100+ SQL problems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-name">BI Tools</div>
+                        <p>Tableau, PowerBI basics</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=TPMlZxRRaBQ" class="resource-link" target="_blank">
+                                    Tableau Full Course - Simplilearn
+                                </a>
+                                <p class="resource-desc">9-hour Tableau tutorial.</p>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <span class="resource-type youtube">YouTube</span>
+                                <a href="https://www.youtube.com/watch?v=NNSHu0rkew8" class="resource-link" target="_blank">
+                                    Power BI Full Course - Edureka
+                                </a>
+                                <p class="resource-desc">Complete PowerBI guide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-showcase">
+                <h3 style="color: #E91E63; margin-bottom: 20px; text-align: center;">🎯 Phase 3 Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4 style="color: #FFD700;">1. SQL Database Project</h4>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Build and query custom database</p>
+                    </div>
+                    <div class="project-card">
+                        <h4 

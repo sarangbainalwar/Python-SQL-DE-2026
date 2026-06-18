@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ML Roadmap for Data Analyst — Sarang</title>
+  <style>
+    :root{--bg:#f7f8fb;--card:#fff;--accent:#0b66c3;--muted:#556;}    
+    body{font-family:Inter, system-ui, -apple-system, Arial, sans-serif;background:var(--bg);color:#111;margin:0;}
+    .wrap{max-width:920px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    h1{font-size:22px;margin:0;color:var(--accent)}
+    p.lead{margin:6px 0 18px;color:var(--muted)}
+    .card{background:var(--card);border-radius:10px;box-shadow:0 6px 18px rgba(12,30,60,0.06);padding:18px;margin-bottom:14px}
+    h2{font-size:16px;margin:0 0 8px}
+    ul{margin:8px 0 12px 20px}
+    a{color:var(--accent);text-decoration:none}
+    .phase{display:grid;grid-template-columns:1fr;gap:8px}
+    .links a{display:block;margin:6px 0}
+    footer{font-size:13px;color:#444;margin-top:18px;text-align:center}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:13px}
+    @media(min-width:760px){.phase{grid-template-columns:repeat(2,1fr)} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Machine Learning Roadmap — For Data Analysts</h1>
+        <p class="lead">Step-by-step plan to move from data analysis → machine learning, with free resources and project ideas.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Overview</h2>
+      <p>Follow these phases in order: <strong>Math & Statistics → Python for ML → Core ML Concepts → Projects → Advanced Topics</strong>. Use the linked free videos, courses and docs to learn and practice.</p>
+    </section>
+
+    <section class="card">
+      <h2>Phase 1 — Math & Statistics (1–2 weeks)</h2>
+      <div class="phase">
+        <div>
+          <ul>
+            <li>Linear Algebra basics: vectors, matrices, dot product, transpose</li>
+            <li>Probability & Statistics: distributions, mean, variance, Bayes' theorem</li>
+            <li>Calculus intuition: derivatives and gradients</li>
+          </ul>
+        </div>
+        <div class="links">
+          <a href="https://www.youtube.com/user/joshstarmer" target="_blank">StatQuest with Josh Starmer (YouTube)</a>
+          <a href="https://www.khanacademy.org/math/linear-algebra" target="_blank">Khan Academy — Linear Algebra</a>
+          <a href="https://www.khanacademy.org/math/statistics-probability" target="_blank">Khan Academy — Statistics & Probability</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Phase 2 — Python for ML (1–2 weeks)</h2>
+      <div class="phase">
+        <div>
+          <ul>
+            <li>NumPy & Pandas for data manipulation</li>
+            <li>Matplotlib & Seaborn for visualization</li>
+            <li>Scikit-learn basics: <code>fit/predict/transform</code></li>
+          </ul>
+        </div>
+        <div class="links">
+          <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Kaggle — Intro to Machine Learning</a>
+          <a href="https://www.kaggle.com/learn/pandas" target="_blank">Kaggle — Pandas</a>
+          <a href="https://www.youtube.com/watch?v=LHBE6Q9XlzI" target="_blank">freeCodeCamp — Python for Data Science (Video)</a>
+          <a href="https://scikit-learn.org/stable/getting_started.html" target="_blank">Scikit-learn — Getting Started</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Phase 3 — Core ML Concepts (3–4 weeks)</h2>
+      <div class="phase">
+        <div>
+          <ul>
+            <li><strong>Supervised:</strong> Linear & Logistic Regression, Decision Trees, Random Forests, Gradient Boosting (XGBoost/LightGBM)</li>
+            <li><strong>Unsupervised:</strong> K‑Means, Hierarchical Clustering, PCA</li>
+            <li>Model evaluation: train/test split, CV, accuracy, precision, recall, F1, ROC‑AUC</li>
+          </ul>
+        </div>
+        <div class="links">
+          <a href="https://www.youtube.com/watch?v=7eh4d6sabA0" target="_blank">freeCodeCamp — Machine Learning Crash Course (Video)</a>
+          <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVP3fZcu3lOzAGZ_4J2d6qna" target="_blank">Krish Naik — Machine Learning Playlist (YouTube)</a>
+          <a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank">Kaggle — Intermediate Machine Learning</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Phase 4 — Practical Projects (4–6 weeks ongoing)</h2>
+      <p>Do end‑to‑end projects. Each project should include: EDA, feature engineering, modeling, evaluation, and a short write‑up in a notebook.</p>
+      <div class="phase">
+        <div>
+          <ul>
+            <li>Retail: Customer churn / sales prediction (classification/regression)</li>
+            <li>Healthcare: Disease prediction (classification)</li>
+            <li>Finance: Regression/time series (price prediction — basic)</li>
+            <li>Recommendation: Collaborative filtering basics</li>
+          </ul>
+        </div>
+        <div class="links">
+          <a href="https://www.kaggle.com/datasets" target="_blank">Kaggle Datasets (find project data)</a>
+          <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVMDmG9y3kS6p0F6o2Q2Q6iT" target="_blank">Krish Naik — Data Science Projects (YouTube)</a>
+          <a href="https://www.freecodecamp.org/news/tag/machine-learning/" target="_blank">freeCodeCamp — ML project guides</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Phase 5 — Advanced Topics (Optional)</h2>
+      <ul>
+        <li>Feature engineering & feature selection</li>
+        <li>Hyperparameter tuning (GridSearchCV, RandomizedSearchCV, Optuna)</li>
+        <li>NLP basics and text classification</li>
+        <li>Deep Learning (TensorFlow / PyTorch) — after ML fundamentals</li>
+      </ul>
+      <div class="links">
+        <a href="https://course.fast.ai/" target="_blank">fast.ai — Practical Deep Learning</a>
+        <a href="https://www.youtube.com/watch?v=VyWAvY2CF9c" target="_blank">freeCodeCamp — Deep Learning Crash Course (Video)</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Practice & Portfolio Tips</h2>
+      <ul>
+        <li>Use Jupyter Notebooks and document your thought process.</li>
+        <li>Push notebooks to GitHub with clear READMEs.</li>
+        <li>Create short writeups on LinkedIn to summarise project insights.</li>
+        <li>Share dashboards on Tableau Public or simple web apps with Streamlit.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div>Suggested timeline: Month 1 — foundations; Month 2 — core ML; Month 3 — projects. Adjust based on your pace.</div>
+    </footer>
+  </div>
+</body>
+</html>
