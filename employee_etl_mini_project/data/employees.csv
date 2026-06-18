@@ -1,0 +1,7 @@
+Employee_ID,Name,Department,Salary,City
+101,Rahul,IT,60000,Mumbai
+102,Priya,HR,55000,Pune
+103,Amit,Finance,,Delhi
+104,Sneha,IT,80000,Nagpur
+105,Neha,HR,52000,
+106,Arjun,Finance,70000,Mumbai
