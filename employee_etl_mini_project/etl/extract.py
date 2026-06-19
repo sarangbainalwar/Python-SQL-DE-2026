@@ -1,4 +1,5 @@
 import pandas as pd
+from utils.logger import logger
 from database.connection import engine
 
 def extract_data():
@@ -6,5 +7,5 @@ def extract_data():
     select * from employees_mini_pj;    """
 
     df=pd.read_sql(query,engine)
-    print("data extracted successfully")
+    logger.info("data extracted successfully")
     return df

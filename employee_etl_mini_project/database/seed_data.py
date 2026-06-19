@@ -1,3 +1,4 @@
+from utils.logger import logger
 import pandas as pd 
 from database.connection import engine
 
@@ -48,4 +49,4 @@ employees.to_sql(
     index=False
 )
 
-print("sample data inserted")
+logger.info("sample data inserted")

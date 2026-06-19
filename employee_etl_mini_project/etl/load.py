@@ -1,3 +1,5 @@
+
+from utils.logger import logger 
 from database.connection import engine
 
 def load_data(df):
@@ -14,4 +16,4 @@ def load_data(df):
     )
     print("Data exported into CSV")
     
-    print("Cleaned data loaded into postgresql")
+    logger.info("Cleaned data loaded into postgresql")

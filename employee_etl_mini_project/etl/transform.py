@@ -1,3 +1,4 @@
+from utils.logger import logger
 def transform_data(df):
     df["salary"]=df["salary"].fillna(
         df["salary"].mean()
@@ -19,6 +20,6 @@ def transform_data(df):
         
     df["salary_band"] = df["salary"].apply(salary_band)
     
-    print("transformation completed")
+    logger.info("transformation completed")
     
     return df
