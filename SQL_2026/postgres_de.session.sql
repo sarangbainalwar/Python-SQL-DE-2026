@@ -14,4 +14,6 @@ insert into employees values
 (3,'Amit','Finance',70000),
 (4,'Sneha','IT',80000);
 
-select * from employees;
+select * from employees_mini_pj;
+
+select * from employees_cleaned;

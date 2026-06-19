@@ -1,0 +1,7 @@
+employee_id,name,department,salary,city,bonus,salary_band
+101,rahul,IT,60000.0,Mumbai,6000.0,medium
+102,priya,HR,55000.0,Pune,5500.0,medium
+103,amit,Finance,63400.0,Delhi,6340.0,medium
+104,sneha,IT,80000.0,Nagpur,8000.0,High
+105,neha,HR,52000.0,Unknown,5200.0,low
+106,arjun,Finance,70000.0,Mumbai,7000.0,High
