@@ -20,7 +20,7 @@ Looking at this roadmap section (Weeks 7-10), here's a practical prioritization 
 
 **5. Logging (Week 8, Day 2)**
 - `logging.info()`, log levels, `basicConfig()`, file logging
-- Every DE pipeline needs this for debugging — cheap to learn, high payoff
+- Every DE pipeline needs this for debugging — cheap to learn, high payoff 
 
 **6. Configuration Files (Week 8, Day 3)**
 - YAML/JSON config, environment variables, externalizing credentials
