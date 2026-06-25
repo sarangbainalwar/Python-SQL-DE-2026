@@ -1,4 +1,9 @@
-drop table if EXISTS meter_table cascade;
+-- Sample Schema Creation
+-- The original assignment provided only the source columns.
+-- The sample tables and test data below are created to have a better understanding.
+
+-- Source table containing meter and customer information
+drop table if EXISTS meter_table;
 
 create table meter_table(
     id int primary key,
@@ -26,6 +31,12 @@ INSERT INTO meter_table VALUES
 (106,'Migration','Mike','MTR006','DEV106','2024-06-05','2024-06-10','ACTIVE','S1E'),
 
 (107,'Install','Chris','MTR007','DEV107','2024-07-10','2024-07-15','ACTIVE','Legacy');
+
+
+
+-- Source table containing meter readings.
+-- Multiple readings per meter are intentionally inserted
+-- to test retrieval of the latest reading.
 
 DROP TABLE IF EXISTS reading_table;
 
@@ -55,10 +66,14 @@ VALUES
 
 ('MTR006','2025-06-20');
 
+
+-- Lookup table containing device details.
+-- Used to retrieve CHF device information.
 DROP TABLE IF EXISTS device_table;
 
 CREATE TABLE device_table
 (
+    device_id_chf VARCHAR(30),
     device_id VARCHAR(30),
     name VARCHAR(50)
 );
@@ -66,23 +81,34 @@ CREATE TABLE device_table
 INSERT INTO device_table
 VALUES
 
-('DEV101','John'),
+('CHF1001','DEV101','John'),
 
-('DEV103','Bob'),
+('CHF1002','DEV103','Bob'),
 
-('DEV104','David'), 
+('CHF1003','DEV104','David'),
 
-('DEV106','Mike');
+('CHF1004','DEV106','Mike');
 
 select * from meter_table;
 select * from device_table;
 select * from reading_table;
 
 
+-- CTE: Retrieve the latest reading for each meter and
+-- calculate the number of days since the latest reading.
+
 with days_diff as (
     select meter_number,max(reading_date) as latest_reading_date, TIMESTAMPDIFF(DAY,max(reading_date),CURRENT_TIMESTAMP) as last_reading_days_ago  from reading_table
     group by meter_number
 )
+
+-- Final Output
+-- Implements the business rules defined in the assignment:
+-- 1. Filter only S1, S1E and S2 smart meters.
+-- 2. Derive no_read_flag for S2 devices.
+-- 3. Retrieve CHF device information.
+-- 4. Calculate supply_active_flag.
+-- 5. Determine next_action using CASE expressions.
 
 select 
     mt.id id,
@@ -99,11 +125,14 @@ select
         when d.last_reading_days_ago <= 60 and mt.smart_meter_type = 'S2' then 'FALSE'
         else NULL 
     end as no_read_flag,
-    dt.device_id device_id_chf,
+    dt.device_id_chf device_id_chf,
     case 
         when mt.supply_start_date > CURRENT_DATE then 'yes'
         else 'no'
-    end as supply_active_flag,  -- NOTE: questionable condition
+    end as supply_active_flag,  
+-- NOTE: -- Business rule:
+-- Supply is considered active if the supply start date is greater than the current date,
+-- as specified in the assignment document.
     case 
         when mt.smart_meter_type='S1' and mt.device_id is NULL then 'Exchange - S1'
         when mt.smart_meter_type='S1' and mt.device_id is NOT NULL then 'Exchange - S1 working'
