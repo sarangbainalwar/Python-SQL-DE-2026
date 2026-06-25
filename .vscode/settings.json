@@ -1,20 +1,6 @@
 {
     "sqltools.connections": [
         {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "ssh": "Disabled",
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "mysql",
-            "username": "root",
-            "database": "world"
-        },
-        {
             "ssh": "Disabled",
             "previewLimit": 50,
             "server": "localhost",
@@ -33,6 +19,20 @@
             "name": "postgres_de",
             "database": "de_company_db",
             "username": "postgres"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL",
+            "database": "world",
+            "username": "root"
         }
     ],
     "a-file-icon-vscode.arrowTheme": "triangle",

@@ -179,3 +179,44 @@ update accounts set balance = balance+1000 where id = 2;
 rollback to sp1;
 
 commit;
+
+create table a(
+    id int
+);
+
+insert into a values (1),(2),(2),(null),(5);
+
+select * from a;
+select * from b;
+
+create table b(
+    id int
+)
+
+insert into b values (2),(2),(3),(null),(5);
+
+select a.id, b.id from a inner join b 
+on a.id=b.id;
+
+select a.id,b.id from a
+left join b On a.id = b.id;
+
+select a.id,b.id from a right join b on a.id=b.id;
+
+
+select a.id,b.id from a
+left join b On a.id = b.id
+
+union
+
+select a.id,b.id from a 
+right join b on a.id=b.id;
+
+select * from a cross
+join b;
+
+alter table a 
+rename to Aa;
+
+alter table b 
+rename column id to emp_id;
