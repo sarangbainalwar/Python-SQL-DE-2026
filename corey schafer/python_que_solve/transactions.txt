@@ -1,0 +1,4 @@
+txn_id|amount|currency|status
+T001|4500.00|INR|settled
+T002|120.50|USD|pending
+T003|8900.00|INR|failed

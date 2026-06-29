@@ -1,2 +1,4 @@
 pipeline_name,status,rows_processed,run_date
-"['sales_etl', 'success', 95000, '2024-06-01']","['inventory_sync', 'failed', 0, '2024-06-01']","['finance_load', 'success', 5400, '2024-06-01']"
+sales_etl,success,95000,2024-06-01
+inventory_sync,failed,0,2024-06-01
+finance_load,success,5400,2024-06-01

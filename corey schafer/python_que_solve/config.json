@@ -1,0 +1,13 @@
+{
+  "pipeline": "sales_etl",
+  "source": {
+    "type": "BigQuery",
+    "dataset": "raw_sales"
+  },
+  "target": {
+    "type": "MySQL",
+    "table": "sales_fact"
+  },
+  "schedule": "0 2 * * *",
+  "retries": 3
+}
