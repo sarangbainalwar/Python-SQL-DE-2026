@@ -1,0 +1,4 @@
+order_id,customer,date,sku,qty,price
+ORD001,Riya,2024-06-01,SKU-A,2,500
+ORD001,Riya,2024-06-01,SKU-B,1,1200
+ORD002,Arjun,2024-06-01,SKU-C,5,200
