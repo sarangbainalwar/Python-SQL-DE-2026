@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+venv/
+.venv/
+logs/*.log
+data/raw/*.json
+data/processed/*.csv
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+.DS_Store
